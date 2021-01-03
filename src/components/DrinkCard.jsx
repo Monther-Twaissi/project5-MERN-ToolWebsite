@@ -9,6 +9,8 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import "./FoodO.css";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
+import axios from "axios";
+import { Popup } from "./Popup";
 
 const useStyles = makeStyles((theme) => ({
   root: { minWidth: 200, height: 400 },
@@ -18,15 +20,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function DrinkCard(props) {
-  const [quantity, setQuantity] = React.useState("");
+  let userData = localStorage.getItem("username");
+  console.log(`the data is ${userData}`);
+  const [size, setSize] = React.useState("");
   const [open, setOpen] = React.useState(false);
-
+  const [submited, setSubmit] = React.useState(false);
+  const [userInfo, setUserInfo] = React.useState(
+    JSON.parse(localStorage.getItem("userInfo"))
+  );
   const classes = useStyles();
   const handleChange = (event) => {
-    setQuantity(event.target.value);
+    setSize(event.target.value);
   };
+  const Close = () => setSubmit(false);
 
-  console.log(quantity);
+  console.log(size);
 
   const handleClose = () => {
     setOpen(false);
@@ -35,7 +43,26 @@ export default function DrinkCard(props) {
   const handleOpen = () => {
     setOpen(true);
   };
+  const AddItem = async (e) => {
+    e.preventDefault();
 
+    const newName = userData || "anything";
+
+    if (size !== "" && userInfo) {
+      let newJSON = await {
+        username: newName,
+        cardName: props.drinkName,
+        cardDesc: props.drinkDesc,
+        cardImg: props.drinkImg,
+        quantity: 1,
+        size: size,
+        price: props.price,
+      };
+      axios.post("http://localhost:5000/api/orders", newJSON).then(() => {});
+    } else {
+      setSubmit(true);
+    }
+  };
   return (
     <Card className={classes.root}>
       <CardActionArea>
@@ -68,7 +95,7 @@ export default function DrinkCard(props) {
               open={open}
               onClose={handleClose}
               onOpen={handleOpen}
-              value={quantity}
+              value={size}
               onChange={handleChange}
             >
               <MenuItem value={"small"}>Small</MenuItem>
@@ -76,9 +103,14 @@ export default function DrinkCard(props) {
               <MenuItem value={"large"}>Large</MenuItem>
             </Select>
           </FormControl>
-          <Button disabled={quantity ? false : true} variant="contained">
+          <Button
+            onClick={AddItem}
+            disabled={size ? false : true}
+            variant="contained"
+          >
             Order now
           </Button>
+          <Popup show={submited} onHide={Close} />
         </div>
       </CardActions>
     </Card>

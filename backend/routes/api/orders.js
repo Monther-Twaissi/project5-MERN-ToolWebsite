@@ -49,7 +49,7 @@ router.post("/orders/:id", function (req, res) {
 router.put("/orders/:id", function (req, res) {
   Orders.updateOne(
     { _id: req.params.id },
-    { quantity: req.body.quantity },
+    { quantity: req.body.quantity, size: req.body.size },
     function (err, docs) {
       if (err) {
         console.log(err);

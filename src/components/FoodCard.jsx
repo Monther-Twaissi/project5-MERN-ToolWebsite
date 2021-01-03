@@ -11,6 +11,7 @@ import "./FoodO.css";
 import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+import { Popup } from "./Popup";
 
 const useStyles = makeStyles((theme) => ({
   root: { minWidth: 200, height: 400 },
@@ -30,6 +31,7 @@ export default function FoodCard(props) {
   const [userInfo, setUserInfo] = useState(
     JSON.parse(localStorage.getItem("userInfo"))
   );
+  const [submited, setSubmit] = useState(false);
 
   const classes = useStyles();
   const handleChange = (event) => {
@@ -62,9 +64,12 @@ export default function FoodCard(props) {
       };
       axios.post("http://localhost:5000/api/orders", newJSON).then(() => {});
     } else {
-      setRedirect(true);
+      setSubmit(true);
     }
   };
+
+  const Close = () => setSubmit(false);
+
   if (redirect == true) {
     return <Redirect to="/log" />;
   }
@@ -120,6 +125,7 @@ export default function FoodCard(props) {
           >
             Order now
           </Button>
+          <Popup show={submited} onHide={Close} />
         </div>
       </CardActions>
     </Card>
