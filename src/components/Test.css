@@ -111,3 +111,11 @@
   display: flex;
   justify-content: center !important;
 }
+.MuiButton-root {
+  background: #f69012 !important;
+  color: #fff !important  ;
+}
+.Mui-disabled {
+  background: lightgray !important;
+  color: #fff !important  ;
+}
