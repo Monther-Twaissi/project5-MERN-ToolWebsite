@@ -43,7 +43,7 @@ function Orders(props) {
 
   return (
     <div className="orderCard">
-      <img className="orderCard__img" src={props.cardImg} alt="" />
+      <img className="orderCard__img" src={props.cardImg} alt="order image" />
       <div className="orderCard__right">
         <div className="orderCard__header">
           <h5>{props.cardName}</h5>

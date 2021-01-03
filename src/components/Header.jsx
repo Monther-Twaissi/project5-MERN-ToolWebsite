@@ -18,7 +18,7 @@ const Header = () => {
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <Link to="/" className="navbar-brand">
-          <img className="Logo" src={Logo} alt="" />
+          <img className="Logo" src={Logo} alt="burger tag logo" />
         </Link>
         <button
           className="navbar-toggler"
@@ -58,12 +58,12 @@ const Header = () => {
               <>
                 <li className="nav-item">
                   <Link to="/profile" className="nav-link">
-                    Profile
+                    {userData}
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link to="/log" className="nav-link" onClick={logout}>
-                    {userData}
+                    Log out
                   </Link>
                 </li>
               </>

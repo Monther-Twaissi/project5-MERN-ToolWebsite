@@ -15,11 +15,13 @@ export default class Landing extends Component {
       confirmPasswordR: "",
       usernameL: "",
       passwordL: "",
-      msg: null,
-      msgL: null,
       redirect: false,
-      isLoggedin: false,
       userInfo: null,
+      errMsgU: null,
+      errMsgP: null,
+      errMsgUR: null,
+      errMsgM: null,
+      errMsgPR: null,
     };
   }
   handelInputChange = (e) => {
@@ -38,17 +40,22 @@ export default class Landing extends Component {
     };
     if (rData.usernameR.length < 4) {
       return this.setState({
-        msg: "Username Field must contain at least 4 characters",
+        errMsgUR: "Username Field must contain at least 4 characters",
+      });
+    }
+    if (rData.mobileR.length < 10 || rData.mobileR.length > 14) {
+      return this.setState({
+        errMsgM: "Invalid Mobile Number",
       });
     }
     if (rData.passwordR.length < 8) {
       return this.setState({
-        msg: "Password must contain at least 8 characters",
+        errMsgPR: "Password must contain at least 8 characters",
       });
     }
     if (rData.passwordR !== rData.confirmPasswordR) {
       return this.setState({
-        msg: "Please Make Sure Both Password are Match!",
+        errMsgPR: "Please Make Sure Both Password are Match!",
       });
     }
     await axios
@@ -88,11 +95,11 @@ export default class Landing extends Component {
       .then((res) => {
         if (res.data === "User not found") {
           this.setState({
-            msgL: "User not found",
+            errMsgU: "User not found",
           });
         } else if (res.data === "Wrong Username or password") {
           this.setState({
-            msgL: "Wrong Username or password",
+            errMsgP: "Wrong Username or password",
           });
         } else {
           cookie.save("token", res.data, { path: "/" });
@@ -123,15 +130,9 @@ export default class Landing extends Component {
             <div className="col-lg-5 form1 ">
               <img
                 src="https://www.dotit.com/media/allergen-awareness-training/chef.png"
-                alt=""
+                alt="chef image"
                 class="image-1"
               />
-              {this.state.msgL !== null ? (
-                <div className="p-3 mb-2 bg-danger text-white">
-                  {" "}
-                  {this.state.msgL}{" "}
-                </div>
-              ) : null}
               <form onSubmit={this.onSubmitR} className="ma-form">
                 <h2>
                   <b>Register</b>
@@ -140,44 +141,53 @@ export default class Landing extends Component {
                 </h2>
                 <br />
                 <div className="form-holder">
-                  <span className="lnr lnr-user"></span>
+                  {/* <span className="lnr lnr-user"></span> */}
+                  {this.state.errMsgUR !== null ? (
+                    <p className="redFont"> {this.state.errMsgUR} </p>
+                  ) : null}
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Username"
+                    placeholder="&#xf406; Enter Your Username"
                     name="usernameR"
                     onChange={this.handelInputChange}
                     required
                   />
                 </div>
                 <div className="form-holder">
-                  <span className="lnr lnr-phone-handset"></span>
+                  {/* <span className="lnr lnr-phone-handset"></span> */}
+                  {this.state.errMsgM !== null ? (
+                    <p className="redFont"> {this.state.errMsgM} </p>
+                  ) : null}
                   <input
                     type="number"
                     className="form-control"
-                    placeholder="Phone Number"
+                    placeholder="&#xf095; Type Your Phone Number"
                     name="mobileR"
                     onChange={this.handelInputChange}
                     required
                   />
                 </div>
                 <div className="form-holder">
-                  <span className="lnr lnr-lock"></span>
+                  {/* <span className="lnr lnr-lock"></span> */}
+                  {this.state.errMsgPR !== null ? (
+                    <p className="redFont"> {this.state.errMsgPR} </p>
+                  ) : null}
                   <input
                     type="password"
                     className="form-control"
-                    placeholder="Password"
+                    placeholder="&#xf084; Type Your Password"
                     name="passwordR"
                     onChange={this.handelInputChange}
                     required
                   />
                 </div>
                 <div className="form-holder">
-                  <span className="lnr lnr-lock"></span>
+                  {/* <span className="lnr lnr-lock"></span> */}
                   <input
                     type="password"
                     className="form-control"
-                    placeholder="Confirm Password"
+                    placeholder="&#xf084; Confirm Password"
                     name="confirmPasswordR"
                     onChange={this.handelInputChange}
                     required
@@ -195,12 +205,6 @@ export default class Landing extends Component {
             <div className="vertical"></div>
             {/* Login */}
             <div className="col-lg-5 form2 ">
-              {this.state.msg !== null ? (
-                <div className="p-3 mb-2 bg-danger text-white">
-                  {" "}
-                  {this.state.msg}{" "}
-                </div>
-              ) : null}
               <form onSubmit={this.onSubmitL} className="ma-form2">
                 <h2 className="marginTitle">
                   <b>Login</b>
@@ -209,23 +213,33 @@ export default class Landing extends Component {
                 </h2>
                 <br />
                 <div className="form-holder">
-                  <span className="lnr lnr-user"></span>
+                  {/* <span className="lnr lnr-user"></span> */}
+                  {this.state.errMsgU !== null ? (
+                    <p className="redFont">{this.state.errMsgU} </p>
+                  ) : null}
                   <input
                     type="text"
-                    className="form-control"
-                    placeholder="Username"
+                    className="form-control "
+                    style={{ fontFamily: "FontAwesome" }}
+                    placeholder="&#xf406; Enter Your Username"
                     name="usernameL"
+                    value={this.state.usernameL}
                     onChange={this.handelInputChange}
                     required
                   />
                 </div>
                 <div className="form-holder">
-                  <span className="lnr lnr-lock"></span>
+                  {/* <span className="lnr lnr-lock"></span> */}
+                  {this.state.errMsgP !== null ? (
+                    <p className="redFont"> {this.state.errMsgP} </p>
+                  ) : null}
                   <input
                     type="password"
                     className="form-control"
-                    placeholder="Password"
+                    style={{ fontFamily: "FontAwesome" }}
+                    placeholder="&#xf084; Enter Your Password"
                     name="passwordL"
+                    value={this.state.passwordL}
                     onChange={this.handelInputChange}
                     required
                   />
@@ -241,6 +255,7 @@ export default class Landing extends Component {
               <img
                 src="https://themezinho.net/steaque/images/tab-dishes04.png"
                 className="image-2"
+                alt="burger image"
               />
             </div>
           </div>

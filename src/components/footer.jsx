@@ -39,7 +39,7 @@ function Footer() {
           <div className="footer-logo">
             <Link to="/" className="social-logo">
               {/* <img src={Logo} alt="Website Logo"></img> */}
-              <img src={Logo} alt="" />
+              <img src={Logo} alt="burger tag logo" />
             </Link>
           </div>
           <small className="website-rights">Burger Tag © 2020</small>

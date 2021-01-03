@@ -31,13 +31,15 @@ router.post(
     try {
       let userLogin = await User.findOne({ username });
       if (!userLogin) {
-        return res.status(400).json({ errors: [{ msg: "User not found" }] });
+        // return res.status(400).json({ msg: "User not found" });
+        res.send("User not found");
       }
       const isMatch = await bcrypt.compare(password, userLogin.password);
       if (!isMatch) {
-        return res
-          .status(400)
-          .json({ errors: [{ msg: "Wrong Username or password" }] });
+        // return res
+        //   .status(400)
+        //   .json({ msg: "Wrong Username or password" });
+        res.send("Wrong Username or password");
       }
       const payload = {
         userLogin: {
