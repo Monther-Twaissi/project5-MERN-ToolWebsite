@@ -260,6 +260,7 @@ export default class Landing extends Component {
             </div>
           </div>
         </div>
+        <hr className="footerHr" />
       </section>
     );
   }

@@ -121,7 +121,10 @@ body {
   position: absolute;
   top: -15px;
 }
-
+.footerHr {
+  border-top: 3px solid black;
+  margin: 4rem 15rem 0 15rem;
+}
 /* this work fixed by ahmada3mar*/
 input {
   padding: 10px;
@@ -159,6 +162,9 @@ input {
   /* .form-control {
     width: 100%;
   } */
+  .footerHr {
+    display: none;
+  }
 }
 @media only screen and (max-width: 321px) {
   #landing {
@@ -181,6 +187,9 @@ input {
     margin-top: 0;
   }
   .footer-links {
+    display: none;
+  }
+  .footerHr {
     display: none;
   }
 }
@@ -207,6 +216,9 @@ input {
     margin-left: 0;
   }
   .footer-links {
+    display: none;
+  }
+  .footerHr {
     display: none;
   }
 }
@@ -237,6 +249,9 @@ input {
     font-weight: bolder;
   }
   .footer-links {
+    display: none;
+  }
+  .footerHr {
     display: none;
   }
 }
@@ -274,5 +289,10 @@ input {
   }
   .footer-links {
     display: none;
+  }
+  .footerHr {
+    margin: auto;
+    margin-left: 10rem;
+    margin-right: 10rem;
   }
 }
