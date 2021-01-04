@@ -1,8 +1,7 @@
 import React from "react";
 import "./AboutBody.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import { Link } from 'react-router-dom';
-
+import { Link } from "react-router-dom";
 
 function AboutBody() {
   return (
@@ -13,13 +12,12 @@ function AboutBody() {
             <h2 className="about-header">Who Are We?</h2>
             <p className="about-paragraph">
               We are the best place to go when you’re looking for delicious
-              Burgers! <br /> Our specialty is the flavors starting from our
-              heart. <br /> We are the diner where you find unexpected as well,
-              amazing atmosphere and endless joy! <br /> To Sum Up, Best Burgers
-              In Town.
+              Burgers! <br /> We are the diner where you find unexpected as
+              well, amazing atmosphere and endless joy! <br /> To Sum Up, Best
+              Burgers In Town.
             </p>
             <Link to="about">
-            <button className="btn btn-danger">More About Us</button>
+              <button className="btn btn-danger">More About Us</button>
             </Link>
           </div>
           <div className="about-column-33">
@@ -32,7 +30,7 @@ function AboutBody() {
         </div>
       </div>
 
-      <div className="about-container">
+      <div className="about-container1">
         <div className="about-row-container">
           <div className="about-column-33">
             <img
@@ -50,7 +48,7 @@ function AboutBody() {
               burger delivered to you is the best burger you could have ordered.
             </p>
             <Link to="food">
-            <button className="btn btn-danger">OUR MENU</button>
+              <button className="btn btn-danger">OUR MENU</button>
             </Link>
           </div>
         </div>

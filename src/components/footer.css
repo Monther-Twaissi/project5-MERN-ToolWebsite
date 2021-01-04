@@ -6,7 +6,9 @@
   justify-content: center;
   align-items: center;
 }
-
+.footerHr {
+  border-top: 3px solid black;
+}
 .footer-subscription {
   display: flex;
   flex-direction: column;
@@ -168,6 +170,9 @@
     /* margin: 0 2rem 0 2rem; */
     padding: 0;
     margin: 16px;
+  }
+  .footerHr {
+    display: none;
   }
 }
 

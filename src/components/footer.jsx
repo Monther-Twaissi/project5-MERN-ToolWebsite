@@ -34,7 +34,9 @@ function Footer() {
           </div>
         </div>
       </div> */}
+
       <section className="social-media">
+        <hr className="footerHr" />
         <div className="social-media-wrap">
           <div className="footer-logo">
             <Link to="/" className="social-logo">

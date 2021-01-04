@@ -4,10 +4,14 @@
   --div-button: #6f7219;
 }
 .about-container {
-  padding: 10px 10px 10% 6%;
+  padding: 10px 10px 2% 6%;
   background: #ffffff;
 }
-
+.about-container1 {
+  padding: 10px 10px 2% 10%;
+  background: #ffffff;
+  margin-bottom: 5%;
+}
 .about-header {
   color: var(--div-secondary-color);
   font-family: "Cairo", sans-serif;
@@ -15,7 +19,7 @@
 .about-paragraph {
   color: black;
   font-family: "Poppins", sans-serif;
-  font-size: 27px;
+  font-size: 26px;
 }
 .about-row-container::after {
   content: "";
@@ -29,11 +33,13 @@
   float: left;
   width: 51.66666%;
   padding: 6%;
+  margin-top: 5%;
 }
 .about-column-667 {
   float: left;
   width: 56.66666%;
   padding: 6%;
+  margin-left: 8%;
 }
 
 .about-column-33 {
@@ -50,14 +56,47 @@
 }
 .about-image-style1 {
   display: block;
-  height: auto;
-  max-width: 100%;}
+  /* height: auto;
+  max-width: 100%; */
+  height: 30rem;
+  width: 30rem;
+}
 
 .white {
   background: white;
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1025px) and (min-width: 780px) {
+  .about-column-66,
+  .about-column-33 {
+    width: 100%;
+    text-align: center;
+    padding-right: 8rem;
+  }
+  .about-image-style {
+    margin: auto;
+    margin-left: 11%;
+    width: 42rem;
+  }
+  .about-image-style1 {
+    display: block;
+    height: auto;
+    width: 42rem;
+    margin-left: 11%;
+    /* height: 30rem;
+    width: 30rem; */
+  }
+  .about-container,
+  .about-container1 {
+    padding-left: 6%;
+  }
+  .about-column-667 {
+    margin-left: auto;
+    width: 100%;
+    text-align: center;
+  }
+}
+@media screen and (max-width: 1000px) and (min-width: 560px) {
   .about-column-66,
   .about-column-33 {
     width: 100%;
@@ -65,6 +104,22 @@
   }
   .about-image-style {
     margin: auto;
+    width: 40rem;
+  }
+  .about-image-style1 {
+    display: block;
+    height: auto;
+    width: 40rem;
+    /* height: 30rem;
+    width: 30rem; */
+  }
+  .about-container,
+  .about-container1 {
+    padding-left: 6%;
+  }
+  .about-column-667 {
+    margin-left: auto;
+    width: 100%;
   }
 }
 @media screen and (max-width: 541px) {
@@ -93,9 +148,30 @@
     width: 100%;
     padding: 6%;
   }
-  .about-header{
+  .about-header {
     margin-left: -15px;
     text-align: center;
     font-size: 1.7rem;
+  }
+  .about-image-style1 {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    /* height: 30rem;
+    width: 30rem; */
+  }
+  .about-image-style1 {
+    display: block;
+    height: auto;
+    max-width: 100%;
+    /* height: 30rem;
+    width: 30rem; */
+  }
+  .about-container,
+  .about-container1 {
+    padding-left: 2%;
+  }
+  .about-column-667 {
+    margin-left: auto;
   }
 }
